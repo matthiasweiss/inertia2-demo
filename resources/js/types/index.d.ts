@@ -1,3 +1,5 @@
+export { App } from '../../types/generated.d.ts';
+
 export interface User {
     id: number;
     name: string;
