@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Deferred, Head } from '@inertiajs/react';
+import { Deferred, Head, usePoll } from '@inertiajs/react';
 import { ClipLoader } from 'react-spinners';
 import { Post } from './Post';
 
@@ -9,6 +9,8 @@ type DashboardProps = {
 };
 
 export default function Dashboard({ feed, latestPosts }: DashboardProps) {
+    usePoll(5000, { except: ['feed'] });
+
     return (
         <AuthenticatedLayout>
             <Head title="Dashboard" />
