@@ -1,6 +1,10 @@
 import { formatRelativeDate } from '@/utils/format-relative-date';
 
-export function Post({ content, creator, createdAt }: App.Dto.PostDto) {
+type PostProps = {
+    post: App.Dto.PostDto;
+};
+
+export function Post({ post: { creator, createdAt, content } }: PostProps) {
     return (
         <div>
             <div className="flex justify-between gap-8 text-slate-400">

@@ -3,12 +3,10 @@ import { Deferred, Head, usePoll } from '@inertiajs/react';
 import { ClipLoader } from 'react-spinners';
 import { Post } from './Post';
 
-type DashboardProps = {
-    feed?: App.Dto.FeedDto;
-    latestPosts?: App.Dto.PostDto[];
-};
-
-export default function Dashboard({ feed, latestPosts }: DashboardProps) {
+export default function Dashboard({
+    feed,
+    myLatestPosts,
+}: App.Dto.DashboardResponseDto) {
     usePoll(5000, { except: ['feed'] });
 
     return (
@@ -20,8 +18,8 @@ export default function Dashboard({ feed, latestPosts }: DashboardProps) {
                     <h3 className="font-semibold">Your latest posts</h3>
 
                     <div className="contents">
-                        {latestPosts?.map((post) => (
-                            <Post {...post} key={post.id} />
+                        {myLatestPosts?.map((post) => (
+                            <Post key={post.id} post={post} />
                         ))}
                     </div>
                 </div>
@@ -32,7 +30,7 @@ export default function Dashboard({ feed, latestPosts }: DashboardProps) {
                     <Deferred data="feed" fallback={<ClipLoader />}>
                         <div className="contents">
                             {feed?.posts.map((post) => (
-                                <Post {...post} key={post.id} />
+                                <Post key={post.id} post={post} />
                             ))}
                         </div>
                     </Deferred>

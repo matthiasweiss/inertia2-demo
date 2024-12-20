@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dto\PostDto;
 use App\Queries\FeedQuery;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -12,13 +13,13 @@ class DashboardController extends Controller
     {
         /** @var User $user */
         $user = auth()->user();
-        $latestPosts = $user->posts()
+        $myLatestPosts = $user->posts()
             ->with('creator')
             ->latest()
             ->get();
 
         return Inertia::render('Dashboard/Dashboard', [
-            'latestPosts' => $latestPosts,
+            'myLatestPosts' => PostDto::collect($myLatestPosts),
             'feed' => Inertia::defer(fn () => $query->get()),
         ]);
     }
