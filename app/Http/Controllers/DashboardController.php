@@ -12,10 +12,10 @@ class DashboardController extends Controller
 {
     public function __invoke(LatestPostsQuery $latestPostsQuery, FeedQuery $feedQuery): Response
     {
-        $data = DashboardDto::from([
-            'myLatestPosts' => $latestPostsQuery->get(),
-            'feed' => Inertia::defer(fn () => $feedQuery->get()),
-        ]);
+        $data = new DashboardDto(
+            myLatestPosts: $latestPostsQuery->get(),
+            feed: Inertia::defer(fn () => $feedQuery->get()),
+        );
 
         return Inertia::render('Dashboard/Dashboard', $data);
     }
