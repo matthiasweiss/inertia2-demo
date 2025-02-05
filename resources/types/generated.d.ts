@@ -1,7 +1,7 @@
 declare namespace App.Dto {
-    export type DashboardResponseDto = {
-        feed: App.Dto.FeedDto;
+    export type DashboardDto = {
         myLatestPosts: Array<App.Dto.PostDto>;
+        feed: null | App.Dto.FeedDto;
     };
     export type FeedDto = {
         posts: Array<App.Dto.PostDto>;

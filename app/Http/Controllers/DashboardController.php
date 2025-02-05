@@ -2,25 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Dto\PostDto;
+use App\Dto\DashboardDto;
 use App\Queries\FeedQuery;
+use App\Queries\LatestPostsQuery;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class DashboardController extends Controller
 {
-    public function __invoke(FeedQuery $query): Response
+    public function __invoke(LatestPostsQuery $latestPostsQuery, FeedQuery $feedQuery): Response
     {
-        /** @var User $user */
-        $user = auth()->user();
-        $myLatestPosts = $user->posts()
-            ->with('creator')
-            ->latest()
-            ->get();
-
-        return Inertia::render('Dashboard/Dashboard', [
-            'myLatestPosts' => PostDto::collect($myLatestPosts),
-            'feed' => Inertia::defer(fn () => $query->get()),
+        $data = DashboardDto::from([
+            'myLatestPosts' => $latestPostsQuery->get(),
+            'feed' => Inertia::defer(fn () => $feedQuery->get()),
         ]);
+
+        return Inertia::render('Dashboard/Dashboard', $data);
     }
 }

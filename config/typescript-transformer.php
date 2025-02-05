@@ -46,6 +46,7 @@ return [
         Carbon\CarbonInterface::class => 'string',
         Carbon\CarbonImmutable::class => 'string',
         Carbon\Carbon::class => 'string',
+        Inertia\DeferProp::class => 'null',
     ],
 
     /*
