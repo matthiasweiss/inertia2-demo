@@ -16,7 +16,7 @@ export default defineConfig({
             configureServer() {
                 const path = 'app/Data';
 
-                fs.watch(path, undefined, (event, filename) => {
+                fs.watch(path, { recursive: true }, (event, filename) => {
                     console.log(
                         `File changed: ${filename}, running artisan command...`,
                     );
