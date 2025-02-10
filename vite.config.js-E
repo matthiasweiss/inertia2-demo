@@ -14,7 +14,7 @@ export default defineConfig({
         {
             name: 'generate-typescript-definitions',
             configureServer() {
-                const path = 'app/Data';
+                const path = 'app/Dto';
 
                 fs.watch(path, { recursive: true }, (event, filename) => {
                     console.log(

@@ -1,7 +1,7 @@
 import { formatRelativeDate } from '@/utils/format-relative-date';
 
 type PostProps = {
-    post: App.Data.PostData;
+    post: App.Dto.PostDto;
 };
 
 export function Post({ post: { creator, createdAt, content } }: PostProps) {

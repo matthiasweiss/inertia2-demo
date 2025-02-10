@@ -6,7 +6,7 @@ import { Post } from './Post';
 export default function Dashboard({
     feed,
     myLatestPosts,
-}: App.Data.DashboardData) {
+}: App.Dto.DashboardDto) {
     usePoll(5000, { except: ['feed'] });
 
     return (
