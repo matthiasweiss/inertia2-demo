@@ -16,7 +16,7 @@ export default defineConfig({
             configureServer() {
                 const path = 'app/Data';
 
-                fs.watch(path, { recursive: true }, (event, filename) => {
+                fs.watch(path, undefined, (event, filename) => {
                     console.log(
                         `File changed: ${filename}, running artisan command...`,
                     );
@@ -28,7 +28,9 @@ export default defineConfig({
                                     `Error running artisan command: ${stderr}`,
                                 );
                             } else {
-                                console.log(stdout);
+                                console.log(
+                                    'Generated TS definitions successfully!',
+                                );
                             }
                         },
                     );

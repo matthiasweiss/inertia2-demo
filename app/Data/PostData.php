@@ -13,6 +13,6 @@ class PostData extends Data
         public int $id,
         public string $content,
         public UserData $creator,
-        public CarbonImmutable $createdAt
+        public CarbonImmutable $createdAt,
     ) {}
 }

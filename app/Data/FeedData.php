@@ -10,6 +10,6 @@ class FeedData extends Data
 {
     public function __construct(
         /** @var PostData[] */
-        public array $posts
+        public array $posts,
     ) {}
 }
