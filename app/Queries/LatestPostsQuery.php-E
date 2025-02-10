@@ -16,6 +16,6 @@ class LatestPostsQuery
             ->latest()
             ->get();
 
-        return PostData::collect($myLatestPosts)->all();
+        return PostDto::collect($myLatestPosts)->all();
     }
 }

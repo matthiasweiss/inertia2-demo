@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Dto;
+namespace App\Data;
 
 use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
 #[TypeScript]
-class FeedDto extends Data
+class UserData extends Data
 {
     public function __construct(
-        /** @var PostDto[] */
-        public array $posts
+        public string $email
     ) {}
 }

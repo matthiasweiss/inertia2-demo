@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Dto;
+namespace App\Data;
 
 use Inertia\DeferProp;
 use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
 #[TypeScript()]
-class DashboardDto extends Data
+class DashboardData extends Data
 {
     public function __construct(
-        /** @var array<PostDto> */
+        /** @var array<PostData> */
         public array $myLatestPosts,
-        public DeferProp|FeedDto $feed
+        public DeferProp|FeedData $feed
     ) {}
 }

@@ -23,6 +23,6 @@ class FeedQuery
 
         $posts = PostData::collect($posts);
 
-        return FeedData::from(['posts' => $posts]);
+        return FeedDto::from(['posts' => $posts]);
     }
 }
