@@ -14,7 +14,7 @@ export default function Welcome({ auth }: PageProps) {
 
                 <p>
                     {auth.user ? (
-                        <Link href="/dashboard">Dashboard</Link>
+                        <Link href="/dashboard">Let's go!</Link>
                     ) : (
                         <Link href="/login">Log In</Link>
                     )}
