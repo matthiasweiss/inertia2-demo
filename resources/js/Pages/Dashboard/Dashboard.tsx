@@ -1,12 +1,16 @@
+import { Card } from '@/Components/Card';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import { PageProps } from '@/types';
 import { Deferred, Head, usePoll } from '@inertiajs/react';
 import { ClipLoader } from 'react-spinners';
+import { CreatePostForm } from './CreatePostForm';
 import { Post } from './Post';
 
 export default function Dashboard({
+    errors,
     feed,
     myLatestPosts,
-}: App.Data.DashboardData) {
+}: PageProps<App.Data.DashboardData>) {
     usePoll(5000, { except: ['feed'] });
 
     return (
@@ -14,7 +18,11 @@ export default function Dashboard({
             <Head title="Dashboard" />
 
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 p-8 md:grid-cols-2">
-                <div className="flex flex-col gap-4 rounded-lg bg-white p-4 shadow md:p-8">
+                <Card className="col-span-2">
+                    <CreatePostForm errors={errors} />
+                </Card>
+
+                <Card>
                     <h3 className="font-semibold">Your latest posts</h3>
 
                     <div className="contents">
@@ -22,9 +30,9 @@ export default function Dashboard({
                             <Post key={post.id} post={post} />
                         ))}
                     </div>
-                </div>
+                </Card>
 
-                <div className="flex flex-col gap-4 rounded-lg bg-white p-4 shadow md:p-8">
+                <Card>
                     <h3 className="font-semibold">Feed</h3>
 
                     <Deferred data="feed" fallback={<ClipLoader />}>
@@ -34,7 +42,7 @@ export default function Dashboard({
                             ))}
                         </div>
                     </Deferred>
-                </div>
+                </Card>
             </div>
         </AuthenticatedLayout>
     );

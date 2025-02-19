@@ -37,6 +37,9 @@
     },
     "dependencies": {
         "dayjs": "^1.11.13",
-        "react-spinners": "^0.15.0"
+        "laravel-precognition-react": "^0.7.1",
+        "laravel-precognition-react-inertia": "^0.7.1",
+        "react-spinners": "^0.15.0",
+        "tailwind-merge": "^3.0.1"
     }
 }

@@ -12,6 +12,9 @@ declare namespace App.Data {
         creator: App.Data.UserData;
         createdAt: string;
     };
+    export type StorePostData = {
+        content: string;
+    };
     export type UserData = {
         email: string;
     };
